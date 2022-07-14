@@ -42,7 +42,7 @@ import Server.src.Myfile;
 public class Server {
     static ArrayList<Myfile> misArchivos = new ArrayList<Myfile>();
 
-    // b: inicia el main
+    // b: inicia el main / debug
     public static void main(String[] args) throws IOException {
         // c: interfaz
         // d: se define el marco o ventana
@@ -176,7 +176,7 @@ public class Server {
                 JLabel labelArchivo = new JLabel();
                 labelArchivo.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-
+                // d: se agregan los componentes al panel
                 JPanel panelBotones = new JPanel();
                 panelBotones.setBorder(new EmptyBorder(20, 0, 10, 0));
                 panelBotones.add(btSi);
@@ -196,10 +196,12 @@ public class Server {
                     public void actionPerformed(ActionEvent e) {
                         File fileToDowload = new File(nombreArchivo);
                         try {
+                            // g: se tarta de descargar el archivo
                             FileOutputStream fileOutputStream = new FileOutputStream(fileToDowload);
                             fileOutputStream.write(fileData);
+                            // g: se cierra el fichero
                             fileOutputStream.close();
-
+                            // g: se cierra la ventana
                             marco.dispose();
                         } catch (Exception err) {
                             err.printStackTrace();
@@ -211,6 +213,7 @@ public class Server {
                 btNo.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        // g: se cierra la ventana
                         marco.dispose();
                     }
                 });
